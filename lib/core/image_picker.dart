@@ -23,7 +23,7 @@ class PickImage {
 
           cancelButton: CupertinoButton(
             borderRadius: BorderRadius.circular(15.r),
-            color: Color(0xFF4E97C5),
+            color: Color(0xFF4DA8CF),
             child:  Text('cancel',style: TextStyle(fontSize: 18.sp,color: Colors.white),),
             onPressed: () => Navigator.of(context).pop(),
           ),
@@ -33,11 +33,11 @@ class PickImage {
                 children: <Widget>[
                   const Icon(
                     CupertinoIcons.photo_camera_solid,
-                    color: Color(0xFF4E97C5),
+                    color: Color(0xFF4DA8CF),
                   ),
                   SizedBox(width: 20.w),
                   const Text('camera',style: TextStyle(
-                    color: Color(0xFF4E97C5),
+                    color: Color(0xFF4DA8CF),
 
                   ),),
                 ],
@@ -57,10 +57,10 @@ class PickImage {
             CupertinoButton(
               child: Row(
                 children: <Widget>[
-                  const Icon(Icons.insert_photo,color: Color(0xFF4E97C5)),
+                  const Icon(Icons.insert_photo,color: Color(0xFF4DA8CF)),
                   SizedBox(width: 20.w),
                   const Text('gallery',
-                  style: TextStyle(color: Color(0xFF4E97C5)),),
+                  style: TextStyle(color: Color(0xFF4DA8CF)),),
                 ],
               ),
               onPressed: () async {

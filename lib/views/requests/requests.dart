@@ -11,59 +11,56 @@ class RequestsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color.fromARGB(255, 244, 250, 255),
       appBar: AppBar(
         backgroundColor: Color(0xFF4E97C5).withOpacity(0.6),
 
-      title: const Text('All requests'),
+      title: const Text('All requests',style: TextStyle(color: Colors.white, )),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Column(
-            children: [
-              SizedBox(
-                height: 30.h,
-              ),
-              BlocBuilder(
-                bloc: bloc,
-                builder: (context, state) {
-                  if (state is GetAllRequestsSuccessState) {
-                    return SizedBox(
-                      height: (state.requests.length * 170).h,
-                      child: ListView.separated(
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemBuilder: (context, index) =>
-                              RequestCard(
-                                request: state.requests[index],
-                              ),
-                          separatorBuilder: (context, index) => SizedBox(
-                            height: 20.h,
+        child: Column(
+          children: [
+            SizedBox(
+              height: 30.h,
+            ),
+            BlocBuilder(
+              bloc: bloc,
+              builder: (context, state) {
+                if (state is GetAllRequestsSuccessState) {
+                  return ListView.separated(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+
+                    shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemBuilder: (context, index) =>
+                          RequestCard(
+                            request: state.requests[index],
                           ),
-                          itemCount: state.requests.length),
-                    );
-                  } else if (state is GetAllRequestsFailureState) {
-                    return SizedBox(
-                      height: MediaQuery.sizeOf(context).height,
-                      child: Center(
-                        child: Text(state.message),
+                      separatorBuilder: (context, index) => SizedBox(
+                        height: 20.h,
                       ),
-                    );
-                  } else {
-                    return SizedBox(
-                      height: MediaQuery.sizeOf(context).height,
-                      child: const Center(
-                        child: CircularProgressIndicator(
-                          color: Color(0xFF4E97C5),
-                        ),
-                      ),
-                    );
-                  }
-                },
-              )
-            ],
-          ),
+                      itemCount: state.requests.length);
+                } else if (state is GetAllRequestsFailureState) {
+                  return SizedBox(
+                    height: MediaQuery.sizeOf(context).height,
+                    child: Center(
+                      child: Text(state.message),
+                    ),
+                  );
+                } else {
+                  return const Center(
+                    child: CircularProgressIndicator(
+                      color: Color(0xFF4E97C5),
+                    ),
+                  );
+                }
+              },
+            ),
+            SizedBox(
+              height: 30.h,
+            ),
+          ],
         ),
       ),
     );

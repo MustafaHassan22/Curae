@@ -8,7 +8,7 @@ ElevatedButton buttonWidget({required VoidCallback onTap,
   return ElevatedButton(
     onPressed: onTap,
     style: ElevatedButton.styleFrom(
-      backgroundColor: Color(0xFF4E97C5),
+      backgroundColor: Color(0xFF4DA8CF),
 
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(radius ??8.r),

@@ -31,7 +31,7 @@ class Search extends SearchDelegate {
       onPressed: () {
         close(context, null);
       },
-      icon: Icon(Icons.arrow_back,color: Color(0xFF4E97C5),),
+      icon: Icon(Icons.arrow_back,color: Color(0xFF4DA8CF),),
     );
   }
 
@@ -58,7 +58,7 @@ class Search extends SearchDelegate {
       
             if (filteredMedicines.isEmpty) {
               return Center(
-                child: Text('No medicine found.',style: TextStyle(color: Color(0xFF4E97C5),fontSize: 20.sp,fontWeight: FontWeight.bold),),
+                child: Text('No medicine found.',style: TextStyle(color: Color(0xFF4DA8CF),fontSize: 20.sp,fontWeight: FontWeight.bold),),
               );
             }
       
@@ -93,7 +93,7 @@ class Search extends SearchDelegate {
           } else {
             return Center(
               child: CircularProgressIndicator(
-                color: Color(0xFF4E97C5),
+                color: Color(0xFF4DA8CF),
               ),
             );
           }

@@ -29,12 +29,12 @@ class _WrapperState extends State<Wrapper> {
 
         showUnselectedLabels: true,
         unselectedLabelStyle: const TextStyle(color: Colors.white),
-        selectedLabelStyle: const TextStyle(color: Color(0xFF4E97C5)),
+        selectedLabelStyle: const TextStyle(color: Color(0xFF4DA8CF)),
 
         landscapeLayout: BottomNavigationBarLandscapeLayout.centered,
-        unselectedItemColor: Color(0xFF4E97C5).withOpacity(0.5),
-        fixedColor:  Color(0xFF4E97C5),
-        items: List.generate(icons.length, (index) => BottomNavigationBarItem(icon: SvgPicture.asset(icons[index],width: 30.w,height: 30.h,color:Color(0xFF4E97C5) ,),label: titles[index])),
+        unselectedItemColor: Color(0xFF4DA8CF).withOpacity(0.5),
+        fixedColor:  Color(0xFF4DA8CF),
+        items: List.generate(icons.length, (index) => BottomNavigationBarItem(icon: SvgPicture.asset(icons[index],width: 30.w,height: 30.h,color:Color(0xFF4DA8CF) ,),label: titles[index])),
         currentIndex: widget.currentIndex,
         onTap: (value) {
           setState(() {
