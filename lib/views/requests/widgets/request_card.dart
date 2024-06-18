@@ -14,12 +14,13 @@ class RequestCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-       height: 180.h,
-        padding: EdgeInsetsDirectional.symmetric(horizontal: 10.w, ),
+        height: 180.h,
+        padding: EdgeInsetsDirectional.symmetric(
+          horizontal: 10.w,
+        ),
         decoration: BoxDecoration(
           color: Color(0xFF4E97C5).withOpacity(0.4),
           borderRadius: BorderRadiusDirectional.circular(16.r),
-
         ),
         child: Row(
           mainAxisSize: MainAxisSize.max,
@@ -58,7 +59,9 @@ class RequestCard extends StatelessWidget {
 
   Padding buildDetailsColumn() {
     return Padding(
-      padding:  EdgeInsets.symmetric(vertical: 10.w, ),
+      padding: EdgeInsets.symmetric(
+        vertical: 10.w,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -68,9 +71,9 @@ class RequestCard extends StatelessWidget {
             fontWeight: FontWeight.bold,
             fontSize: 20.sp,
           ),
-
-          SizedBox(height: 5,),
-
+          SizedBox(
+            height: 5,
+          ),
           buildText(
             request.medicine.description,
             fontWeight: FontWeight.bold,
@@ -79,35 +82,35 @@ class RequestCard extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
             maxLines: 3,
           ),
-          SizedBox(height: 3,),
-
+          SizedBox(
+            height: 3,
+          ),
           buildText(
-            'Price : ${request.medicine.price}',
+            'Phone : ${request.medicine.price}',
             fontWeight: FontWeight.bold,
             fontSize: 14.sp,
             color: Colors.black45,
           ),
-          SizedBox(height: 5,),
-          buildText(
-            'Ordered by : ${request.user.name}',
-            fontWeight: FontWeight.bold,
-            fontSize: 13.sp,
-              color: Colors.black45
-
+          SizedBox(
+            height: 5,
           ),
+          buildText('Ordered by : ${request.user.name}',
+              fontWeight: FontWeight.bold,
+              fontSize: 13.sp,
+              color: Colors.black45),
         ],
       ),
     );
   }
 
   Widget buildText(
-      String text, {
-        FontWeight fontWeight = FontWeight.normal,
-        double fontSize = 14.0,
-        Color color = Colors.black,
-        TextOverflow overflow = TextOverflow.visible,
-        int maxLines = 1,
-      }) {
+    String text, {
+    FontWeight fontWeight = FontWeight.normal,
+    double fontSize = 14.0,
+    Color color = Colors.black,
+    TextOverflow overflow = TextOverflow.visible,
+    int maxLines = 1,
+  }) {
     return Text(
       text,
       style: TextStyle(

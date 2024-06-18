@@ -20,7 +20,6 @@ class MedicineCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: Color(0xFF4E97C5).withOpacity(0.4),
           borderRadius: BorderRadiusDirectional.circular(16.r),
-
         ),
         // decoration: BoxDecoration(
         //   color: Colors.white,
@@ -51,7 +50,8 @@ class MedicineCard extends StatelessWidget {
                     placeholder: (context, url) => SkeletonAvatar(
                       style: SkeletonAvatarStyle(width: 120.w),
                     ),
-                    errorWidget: (context, url, error) => const Icon(Icons.error),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
                   ),
                 ),
               ),
@@ -83,6 +83,16 @@ class MedicineCard extends StatelessWidget {
                         ),
                         overflow: TextOverflow.ellipsis,
                         maxLines: 3,
+                      ),
+                    ),
+                    if (medicine.location !=
+                        null) // Check if location is not null
+                      SizedBox(height: 4.h),
+                    Text(
+                      'Location: ${medicine.location}',
+                      style: TextStyle(
+                        fontSize: 14.sp,
+                        color: Colors.black87,
                       ),
                     ),
                     Flexible(

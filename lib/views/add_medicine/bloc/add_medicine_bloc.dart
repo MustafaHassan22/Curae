@@ -15,6 +15,7 @@ class AddMedicineBloc extends Bloc<AddMedicineEvent, AddMedicineState> {
   final name = TextEditingController();
   final price = TextEditingController();
   final description = TextEditingController();
+  final location = TextEditingController();
   String imageName = "";
   PickImage pickImage = PickImage.init;
   File? imageFile;
@@ -37,6 +38,7 @@ class AddMedicineBloc extends Bloc<AddMedicineEvent, AddMedicineState> {
         'name': event.name,
         'price': event.price,
         'description': event.description,
+        'location': location.text,
         'image': storageRef,
         'createdAt': DateTime.now().toIso8601String(),
       });

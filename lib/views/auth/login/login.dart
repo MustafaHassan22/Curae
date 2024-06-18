@@ -23,7 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        // backgroundColor: Color.fromARGB(255, 244, 250, 255),
+        backgroundColor: Color.fromARGB(255, 244, 250, 255),
         body: SingleChildScrollView(
           padding: const EdgeInsetsDirectional.symmetric(horizontal: 16),
           child: Form(
@@ -35,7 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 50.h,
                 ),
                 Image.asset(
-                  'assets/images/LO.png',
+                  'assets/images/log.png',
                   height: 200,
                 ),
                 Text(

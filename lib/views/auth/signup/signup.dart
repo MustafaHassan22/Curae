@@ -16,6 +16,7 @@ class SignUpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Color.fromARGB(255, 244, 250, 255),
         body: SingleChildScrollView(
           padding: const EdgeInsetsDirectional.symmetric(horizontal: 16),
           child: Form(
@@ -26,7 +27,7 @@ class SignUpScreen extends StatelessWidget {
                 //   height: 50.h,
                 // ),
                 Image.asset(
-                  'assets/images/LO.png',
+                  'assets/images/log.png',
                   height: 100,
                 ),
                 Text(

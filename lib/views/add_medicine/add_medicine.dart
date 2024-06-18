@@ -26,9 +26,11 @@ class _AddMedicineScreensState extends State<AddMedicineScreens> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Color(0xFF4E97C5).withOpacity(0.6),
-        title: const Text('Add Medicine',style: TextStyle(color: Colors.white,
-         // fontWeight: FontWeight.w700,
-        )),
+        title: const Text('Add Medicine',
+            style: TextStyle(
+              color: Colors.white,
+              // fontWeight: FontWeight.w700,
+            )),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -44,10 +46,10 @@ class _AddMedicineScreensState extends State<AddMedicineScreens> {
               Container(
                 width: double.infinity,
                 height: 150,
-                decoration:  BoxDecoration(
+                decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: const BorderRadius.all(Radius.circular(20)),
-                    border: Border.all(color: Color(0xFF4E97C5),width: 1.5),
+                    border: Border.all(color: Color(0xFF4E97C5), width: 1.5),
                     boxShadow: [
                       BoxShadow(
                         offset: const Offset(0, 4),
@@ -55,34 +57,35 @@ class _AddMedicineScreensState extends State<AddMedicineScreens> {
                         spreadRadius: 0,
                         color: Colors.black.withOpacity(0.15),
                       )
-                    ]
-                ),
-
-
-                child:
-
-                InkWell(
-                    onTap: () {
-                      bloc.pickImage.imagePickerDialog(
-                        context: context,
-                        onSubmit: (file, name) {
-                          setState(() {
-                            bloc.imageFile = file;
-                            bloc.imageName = name;
-                          });
-                        },
-                      );
+                    ]),
+                child: InkWell(
+                  onTap: () {
+                    bloc.pickImage.imagePickerDialog(
+                      context: context,
+                      onSubmit: (file, name) {
+                        setState(() {
+                          bloc.imageFile = file;
+                          bloc.imageName = name;
+                        });
                       },
-                    child:bloc.imageFile == null ?Center(child: Image.asset(Assets.images.addImage.path,fit:BoxFit.cover,color: Color(0xFF4E97C5),height: 130,width: 130,))
-
-                    : Center(child: Image.file(bloc.imageFile!,
-                        fit: BoxFit.cover)),
-
+                    );
+                  },
+                  child: bloc.imageFile == null
+                      ? Center(
+                          child: Image.asset(
+                          Assets.images.addImage.path,
+                          fit: BoxFit.cover,
+                          color: Color(0xFF4E97C5),
+                          height: 130,
+                          width: 130,
+                        ))
+                      : Center(
+                          child:
+                              Image.file(bloc.imageFile!, fit: BoxFit.cover)),
                 ),
               ),
-
               SizedBox(
-                height: 70.h,
+                height: 50.h,
               ),
               textField(
                 context,
@@ -124,7 +127,21 @@ class _AddMedicineScreensState extends State<AddMedicineScreens> {
                 },
               ),
               SizedBox(
-                height: 50.h,
+                height: 16.h,
+              ),
+              textField(
+                context,
+                'Your Location',
+                bloc.location,
+                (value) {
+                  if (value == '') {
+                    return 'please enter location';
+                  }
+                  return null;
+                },
+              ),
+              SizedBox(
+                height: 25.h,
               ),
               BlocListener(
                 bloc: bloc,
@@ -136,32 +153,37 @@ class _AddMedicineScreensState extends State<AddMedicineScreens> {
                       bloc.name.clear();
                       bloc.price.clear();
                       bloc.description.clear();
+                      bloc.location.clear();
                     });
                     KiwiContainer()
                         .resolve<AllMedicinesBloc>()
                         .add(GetAllMedicinesEvent());
                   }
                 },
-                child:  SizedBox(
-                    width: 343.w,
-                    height: 50.h,
-                    child: buttonWidget(
-                        onTap:  () {
-                            if (bloc.formKey.currentState!.validate()) {
-                              if (bloc.imageFile == null) {
-                                toast(msg: 'choose image');
-                              } else {
-                                bloc.add(AddMedicineNowEvent(
-                                    name: bloc.name.text,
-                                    price: bloc.price.text,
-                                    description: bloc.description.text,
-                                    image: bloc.imageFile!,
-                                    imageName: bloc.imageName));
-                              }
-                            }
-                          },text: 'Save',
-                        fontSize: 18.sp,radius: 15.0.r),
-                  ),
+                child: SizedBox(
+                  width: 343.w,
+                  height: 50.h,
+                  child: buttonWidget(
+                      onTap: () {
+                        if (bloc.formKey.currentState!.validate()) {
+                          if (bloc.imageFile == null) {
+                            toast(msg: 'choose image');
+                          } else {
+                            bloc.add(AddMedicineNowEvent(
+                              name: bloc.name.text,
+                              price: bloc.price.text,
+                              description: bloc.description.text,
+                              image: bloc.imageFile!,
+                              imageName: bloc.imageName,
+                              location: bloc.location.text,
+                            ));
+                          }
+                        }
+                      },
+                      text: 'Save',
+                      fontSize: 18.sp,
+                      radius: 15.0.r),
+                ),
               )
             ],
           ),
