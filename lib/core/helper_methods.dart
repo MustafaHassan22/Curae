@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
-Future  navigateTo(context,{required Widget page,bool withHistory =true}){
-  return Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => page,), (route) => withHistory);
+Future navigateTo(context, {required Widget page, bool withHistory = true}) {
+  return Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(
+        builder: (context) => page,
+      ),
+      (route) => withHistory);
 }
-Future  toast({required String msg}){
-  return Fluttertoast.showToast(msg: msg,
-  backgroundColor: Colors.grey, textColor: Colors.white,
-  );
-}
-Future  navigateAndReplace(context,{required Widget page}){
-  return Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => page,));
+
+Future navigateAndReplace(context, {required Widget page}) {
+  return Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => page,
+      ));
 }
 // PreferredSizeWidget? customAppBar(String name,context, {VoidCallback? onTap,bool isCustom=false,Widget? widget}){
 //   String dir = CacheHelper.getLang() == 'en' ? 'left.png' : 'right.png';

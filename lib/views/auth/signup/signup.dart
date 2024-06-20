@@ -16,25 +16,7 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Color.fromARGB(255, 244, 250, 255),
-        body: SingleChildScrollView(
-          padding: const EdgeInsetsDirectional.symmetric(horizontal: 16),
-          child: Form(
-            key: bloc.formKey,
-            child: Column(
-              children: [
-                // SizedBox(
-                //   height: 50.h,
-                // ),
-                Image.asset(
-                  'assets/images/log.png',
-                  height: 100,
-                ),
-=======
-    return  Scaffold(
+    return Scaffold(
       backgroundColor: const Color(0xFF4DA8CF),
       body: SingleChildScrollView(
         padding: const EdgeInsetsDirectional.symmetric(horizontal: 0),
@@ -45,25 +27,25 @@ class SignUpScreen extends StatelessWidget {
             width: MediaQuery.sizeOf(context).width,
             child: Column(
               children: [
-
-                Spacer(flex: 2,),
->>>>>>> 38299405aab368abde625a174d20d6ef6f107712
+                const Spacer(
+                  flex: 2,
+                ),
                 Text(
-                  'Create Account',
+                  'Create Account..',
                   style: TextStyle(
+                    fontFamily: 'courgette',
                     fontSize: 30.sp,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
                 ),
-
-                Spacer(),
+                const Spacer(),
                 Container(
-                  height: 580.h,
+                  height: 650.h,
                   padding: const EdgeInsets.symmetric(horizontal: 15),
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Color.fromARGB(255, 244, 250, 255),
-                    borderRadius: const BorderRadius.only(
+                    borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(0),
                       topLeft: Radius.circular(70),
                       topRight: Radius.circular(70),
@@ -74,7 +56,9 @@ class SignUpScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      SizedBox(height: 30,),
+                      const SizedBox(
+                        height: 30,
+                      ),
                       textField(
                         hintText: 'Name',
                         controller: bloc.name,
@@ -84,7 +68,7 @@ class SignUpScreen extends StatelessWidget {
                           }
                           return null;
                         },
-                        prefixIcon: Icon(Icons.person),
+                        prefixIcon: const Icon(Icons.person),
                       ),
                       SizedBox(
                         height: 16.h,
@@ -98,7 +82,7 @@ class SignUpScreen extends StatelessWidget {
                           }
                           return null;
                         },
-                        prefixIcon: Icon(Icons.phone),
+                        prefixIcon: const Icon(Icons.phone),
                       ),
                       SizedBox(
                         height: 16.h,
@@ -112,12 +96,13 @@ class SignUpScreen extends StatelessWidget {
                           }
                           return null;
                         },
-                        prefixIcon: Icon(Icons.email),
+                        prefixIcon: const Icon(Icons.email),
                       ),
                       SizedBox(
                         height: 16.h,
                       ),
                       textField(
+                        obscureText: true,
                         hintText: 'Password',
                         controller: bloc.password,
                         validator: (value) {
@@ -126,12 +111,13 @@ class SignUpScreen extends StatelessWidget {
                           }
                           return null;
                         },
-                        prefixIcon: Icon(Icons.lock),
+                        prefixIcon: const Icon(Icons.lock),
                       ),
                       SizedBox(
                         height: 16.h,
                       ),
                       textField(
+                        obscureText: true,
                         hintText: 'Confirm Password',
                         controller: bloc.confirmPassword,
                         validator: (value) {
@@ -142,7 +128,7 @@ class SignUpScreen extends StatelessWidget {
                           }
                           return null;
                         },
-                        prefixIcon: Icon(Icons.lock),
+                        prefixIcon: const Icon(Icons.lock),
                       ),
                       SizedBox(
                         height: 30.h,
@@ -151,11 +137,9 @@ class SignUpScreen extends StatelessWidget {
                         bloc: bloc,
                         listener: (context, state) {
                           if (state is SignupSuccessState) {
-                            toast(msg: state.message);
-                            navigateTo(context, page: Wrapper(), withHistory: false);
-                          } else if (state is SignupFailureState) {
-                            toast(msg: state.message);
-                          }
+                            navigateTo(context,
+                                page: Wrapper(), withHistory: false);
+                          } else if (state is SignupFailureState) {}
                         },
                         child: SizedBox(
                           width: 343.w,
@@ -189,11 +173,14 @@ class SignUpScreen extends StatelessWidget {
                             children: [
                               TextSpan(
                                 text: 'Have Account ? ',
-                                style: TextStyle(color: Colors.black, fontSize: 18.sp),
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 18.sp),
                               ),
                               TextSpan(
                                 text: ' Login',
-                                style: TextStyle(color: Color(0xFF4DA8CF), fontSize: 16.sp),
+                                style: TextStyle(
+                                    color: const Color(0xFF4DA8CF),
+                                    fontSize: 16.sp),
                               ),
                             ],
                           ),
@@ -208,6 +195,5 @@ class SignUpScreen extends StatelessWidget {
         ),
       ),
     );
-
   }
 }

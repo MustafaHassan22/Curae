@@ -4,9 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pharmacy/core/cache_helper.dart';
 import 'package:pharmacy/core/kiwi.dart';
 import 'package:pharmacy/firebase_options.dart';
-import 'package:pharmacy/views/auth/login/login.dart';
+
 import 'package:pharmacy/views/splash_screen/splash_screen.dart';
-import 'package:pharmacy/views/splash_screen/splashscreen_wrapper.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,7 +31,6 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-         //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
           home: AnimatedSplashScreen(),

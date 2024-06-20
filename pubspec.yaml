@@ -30,7 +30,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  fluttertoast: ^8.2.5
+ 
   firebase_core: ^2.23.0
   firebase_auth: ^4.14.1
   firebase_storage: ^11.5.2
@@ -54,8 +54,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  build_runner:
-  flutter_gen_runner:
+ 
+ 
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

@@ -13,47 +13,6 @@ class MedicineCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
-    return Expanded(
-      child: Container(
-        height: 180.h,
-        padding: EdgeInsets.symmetric(horizontal: 10.w),
-        decoration: BoxDecoration(
-          color: Color(0xFF4E97C5).withOpacity(0.4),
-          borderRadius: BorderRadiusDirectional.circular(16.r),
-        ),
-        // decoration: BoxDecoration(
-        //   color: Colors.white,
-        //   borderRadius: BorderRadius.circular(16.r),
-        //   boxShadow: const [
-        //     BoxShadow(color: Color(0x406b6b6b), spreadRadius: 1, blurRadius: 5),
-        //   ],
-        // ),
-        child: Row(
-          children: [
-            // Medicine Image
-            SizedBox(
-              width: 120.w,
-              child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 10.w),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(16.r),
-                  child: CachedNetworkImage(
-                    imageBuilder: (context, imageProvider) => Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: imageProvider,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    imageUrl: medicine.image,
-                    placeholder: (context, url) => SkeletonAvatar(
-                      style: SkeletonAvatarStyle(width: 120.w),
-                    ),
-                    errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
-=======
     return Container(
       height: 170.h,
       padding: EdgeInsets.symmetric(horizontal: 10.w),
@@ -81,7 +40,6 @@ class MedicineCard extends StatelessWidget {
                         fit: BoxFit.cover,
                       ),
                     ),
->>>>>>> 38299405aab368abde625a174d20d6ef6f107712
                   ),
                   imageUrl: medicine.image,
                   placeholder: (context, url) => SkeletonAvatar(
@@ -121,6 +79,17 @@ class MedicineCard extends StatelessWidget {
                       maxLines: 3,
                     ),
                   ),
+                  if (medicine.location !=
+                      null) // Check if location is not null
+                    SizedBox(height: 4.h),
+                  Text(
+                    'Location: ${medicine.location}',
+                    style: TextStyle(
+                      fontSize: 14.sp,
+                      color: Colors.black87,
+                    ),
+                  ),
+                  Spacer(),
                   Align(
                     alignment: Alignment.bottomRight,
                     child: SizedBox(
@@ -128,33 +97,8 @@ class MedicineCard extends StatelessWidget {
                       height: 30.h,
                       child: buttonWidget(onTap: onTap, text: 'Request'),
                     ),
-<<<<<<< HEAD
-                    if (medicine.location !=
-                        null) // Check if location is not null
-                      SizedBox(height: 4.h),
-                    Text(
-                      'Location: ${medicine.location}',
-                      style: TextStyle(
-                        fontSize: 14.sp,
-                        color: Colors.black87,
-                      ),
-                    ),
-                    Flexible(
-                      child: Align(
-                        alignment: Alignment.bottomRight,
-                        child: SizedBox(
-                          width: 100.w,
-                          height: 30.h,
-                          child: buttonWidget(onTap: onTap, text: 'Request'),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-=======
                   ),
                 ],
->>>>>>> 38299405aab368abde625a174d20d6ef6f107712
               ),
             ),
           ),

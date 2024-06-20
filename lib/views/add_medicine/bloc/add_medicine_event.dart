@@ -17,3 +17,10 @@ class AddMedicineNowEvent extends AddMedicineEvent {
   List<Object?> get props =>
       [name, price, description, image, imageName, location];
 }
+
+class DeletemedicineEvent extends AddMedicineEvent {
+  final String id;
+  DeletemedicineEvent({required this.id});
+  @override
+  List<Object?> get props => [id];
+}

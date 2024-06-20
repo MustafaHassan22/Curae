@@ -23,21 +23,15 @@ class _AddMedicineScreensState extends State<AddMedicineScreens> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 244, 250, 255),
+      backgroundColor: const Color.fromARGB(255, 244, 250, 255),
       appBar: AppBar(
-<<<<<<< HEAD
-        backgroundColor: Color(0xFF4E97C5).withOpacity(0.6),
+        backgroundColor: const Color(0xFF4E97C5).withOpacity(0.9),
         title: const Text('Add Medicine',
             style: TextStyle(
+              fontWeight: FontWeight.bold,
               color: Colors.white,
               // fontWeight: FontWeight.w700,
             )),
-=======
-        backgroundColor: Color(0xFF4DA8CF).withOpacity(0.9),
-        title: const Text('Add Medicine',style: TextStyle(color: Colors.white,
-         // fontWeight: FontWeight.w700,
-        )),
->>>>>>> 38299405aab368abde625a174d20d6ef6f107712
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -56,11 +50,7 @@ class _AddMedicineScreensState extends State<AddMedicineScreens> {
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: const BorderRadius.all(Radius.circular(20)),
-<<<<<<< HEAD
                     border: Border.all(color: Color(0xFF4E97C5), width: 1.5),
-=======
-                    border: Border.all(color: Color(0xFF4DA8CF),width: 1.5),
->>>>>>> 38299405aab368abde625a174d20d6ef6f107712
                     boxShadow: [
                       BoxShadow(
                         offset: const Offset(0, 4),
@@ -79,7 +69,6 @@ class _AddMedicineScreensState extends State<AddMedicineScreens> {
                           bloc.imageName = name;
                         });
                       },
-<<<<<<< HEAD
                     );
                   },
                   child: bloc.imageFile == null
@@ -94,22 +83,15 @@ class _AddMedicineScreensState extends State<AddMedicineScreens> {
                       : Center(
                           child:
                               Image.file(bloc.imageFile!, fit: BoxFit.cover)),
-=======
-                    child:bloc.imageFile == null ?Center(child: Image.asset(Assets.images.addImage.path,fit:BoxFit.cover,color: Color(0xFF4DA8CF),height: 130,width: 130,))
-
-                    : Center(child: Image.file(bloc.imageFile!,
-                        fit: BoxFit.cover)),
-
->>>>>>> 38299405aab368abde625a174d20d6ef6f107712
                 ),
               ),
               SizedBox(
                 height: 50.h,
               ),
               textField(
-              hintText:   'Name',
-              controller:   bloc.name,
-              validator:   (value) {
+                hintText: 'Your Name',
+                controller: bloc.name,
+                validator: (value) {
                   if (value == '') {
                     return 'please enter your name';
                   }
@@ -120,9 +102,9 @@ class _AddMedicineScreensState extends State<AddMedicineScreens> {
                 height: 16.h,
               ),
               textField(
-              hintText:   'Medicine Name',
-              controller:   bloc.description,
-              validator:   (value) {
+                hintText: 'Medicine Name',
+                controller: bloc.description,
+                validator: (value) {
                   if (value == '') {
                     return 'please enter description';
                   }
@@ -133,10 +115,9 @@ class _AddMedicineScreensState extends State<AddMedicineScreens> {
                 height: 16.h,
               ),
               textField(
-
-               hintText: 'Your Number',
-               controller:  bloc.price,
-               validator:  (value) {
+                hintText: 'Your Number',
+                controller: bloc.price,
+                validator: (value) {
                   if (value == '') {
                     return 'please enter your number';
                   }
@@ -147,16 +128,26 @@ class _AddMedicineScreensState extends State<AddMedicineScreens> {
                 height: 16.h,
               ),
               textField(
-                context,
-                'Your Location',
-                bloc.location,
-                (value) {
+                hintText: 'Your location',
+                controller: bloc.location,
+                validator: (value) {
                   if (value == '') {
-                    return 'please enter location';
+                    return 'please enter your location';
                   }
                   return null;
                 },
               ),
+              // textField(
+              //   context,
+              //   'Your Location',
+              //   bloc.location,
+              //   (value) {
+              //     if (value == '') {
+              //       return 'please enter location';
+              //     }
+              //     return null;
+              //   },
+              // ),
               SizedBox(
                 height: 25.h,
               ),
@@ -164,7 +155,6 @@ class _AddMedicineScreensState extends State<AddMedicineScreens> {
                 bloc: bloc,
                 listener: (context, state) {
                   if (state is AddMedicineSuccessState) {
-                    toast(msg: state.message);
                     setState(() {
                       bloc.imageFile = null;
                       bloc.name.clear();
@@ -184,7 +174,6 @@ class _AddMedicineScreensState extends State<AddMedicineScreens> {
                       onTap: () {
                         if (bloc.formKey.currentState!.validate()) {
                           if (bloc.imageFile == null) {
-                            toast(msg: 'choose image');
                           } else {
                             bloc.add(AddMedicineNowEvent(
                               name: bloc.name.text,

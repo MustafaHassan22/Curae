@@ -26,6 +26,7 @@ class AddMedicineBloc extends Bloc<AddMedicineEvent, AddMedicineState> {
 
   AddMedicineBloc() : super(AddMedicineInitial()) {
     on<AddMedicineNowEvent>(addMedicine);
+    on<DeletemedicineEvent>(deleteMedicine);
   }
   FutureOr<void> addMedicine(
       AddMedicineNowEvent event, Emitter<AddMedicineState> emit) async {
@@ -45,6 +46,15 @@ class AddMedicineBloc extends Bloc<AddMedicineEvent, AddMedicineState> {
       emit(AddMedicineSuccessState(message: 'medicine added successfully'));
     } on FirebaseException catch (e) {
       emit(AddMedicineFailureState(message: e.code));
+    }
+  }
+
+  FutureOr<void> deleteMedicine(
+      DeletemedicineEvent event, Emitter<AddMedicineState> emit) async {
+    try {
+      ins.collection('medicines').doc(event.id);
+    } on FirebaseException catch (e) {
+      throw e;
     }
   }
 }

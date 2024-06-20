@@ -1,46 +1,29 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pharmacy/views/auth/widget/button.dart';
 import 'package:pharmacy/views/requests/model/request_model.dart';
 import 'package:skeletons/skeletons.dart';
 
 class RequestCard extends StatelessWidget {
   final RequestModel request;
-  const RequestCard({super.key, required this.request});
+  final VoidCallback func;
+  const RequestCard({super.key, required this.request, required this.func});
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
-    return Expanded(
-      child: Container(
-        height: 180.h,
-        padding: EdgeInsetsDirectional.symmetric(
-          horizontal: 10.w,
-        ),
-        decoration: BoxDecoration(
-          color: Color(0xFF4E97C5).withOpacity(0.4),
-          borderRadius: BorderRadiusDirectional.circular(16.r),
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            buildImage(),
-            SizedBox(width: 20.w),
-            Expanded(child: buildDetailsColumn()),
-          ],
-        ),
-=======
     return Container(
-     height: 180.h,
-      padding: EdgeInsetsDirectional.symmetric(horizontal: 10.w, ),
+      height: 200.h, // Increase height to prevent overflow
+      padding: EdgeInsetsDirectional.symmetric(
+        horizontal: 10.w,
+      ),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadiusDirectional.circular(16.r),
         boxShadow: const [
           BoxShadow(color: Color(0x406b6b6b), spreadRadius: 1, blurRadius: 5),
         ],
-            ),
+      ),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         children: [
@@ -48,7 +31,6 @@ class RequestCard extends StatelessWidget {
           SizedBox(width: 20.w),
           Expanded(child: buildDetailsColumn()),
         ],
->>>>>>> 38299405aab368abde625a174d20d6ef6f107712
       ),
     );
   }
@@ -76,22 +58,20 @@ class RequestCard extends StatelessWidget {
     );
   }
 
-  Padding buildDetailsColumn() {
+  Widget buildDetailsColumn() {
     return Padding(
       padding: EdgeInsets.symmetric(
         vertical: 10.w,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment:
+            MainAxisAlignment.spaceBetween, // Adjusted mainAxisAlignment
         children: [
           buildText(
             request.medicine.name,
             fontWeight: FontWeight.bold,
             fontSize: 20.sp,
-          ),
-          SizedBox(
-            height: 5,
           ),
           buildText(
             request.medicine.description,
@@ -101,26 +81,24 @@ class RequestCard extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
             maxLines: 3,
           ),
-          SizedBox(
-            height: 3,
-          ),
           buildText(
-<<<<<<< HEAD
-            'Phone : ${request.medicine.price}',
-=======
             '${request.medicine.price}',
->>>>>>> 38299405aab368abde625a174d20d6ef6f107712
             fontWeight: FontWeight.bold,
             fontSize: 14.sp,
             color: Colors.black45,
-          ),
-          SizedBox(
-            height: 5,
           ),
           buildText('Ordered by : ${request.user.name}',
               fontWeight: FontWeight.bold,
               fontSize: 13.sp,
               color: Colors.black45),
+          Align(
+            alignment: Alignment.bottomRight,
+            child: SizedBox(
+              width: 100.w,
+              height: 30.h,
+              child: buttonWidget(onTap: func, text: 'confirm'),
+            ),
+          ),
         ],
       ),
     );

@@ -19,7 +19,7 @@ class _AnimatedSplashScreenState extends State<AnimatedSplashScreen>
       vsync: this,
     );
 
-    _animation = CurvedAnimation(parent: _controller!, curve: Curves.easeIn);
+    _animation = CurvedAnimation(parent: _controller!, curve: Curves.easeInOut);
 
     _controller!.forward();
 
@@ -43,22 +43,15 @@ class _AnimatedSplashScreenState extends State<AnimatedSplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    //  backgroundColor: Colors.deepPurple,
+      backgroundColor: Color.fromARGB(255, 244, 250, 255),
       body: FadeTransition(
         opacity: _animation!,
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              FlutterLogo(size: 100),
+              Image.asset('assets/images/curae-02.png'),
               SizedBox(height: 20),
-              Text(
-                'Curae',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                ),
-              ),
             ],
           ),
         ),
